@@ -206,7 +206,7 @@ public class Leg
 
     public Leg()
     {
-       // animal = AnimalEnum.byung;
+        animal = AnimalEnum.byung;
         bridges = new List<Bridge>();
         destinationText = null;
     }

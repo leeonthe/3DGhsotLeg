@@ -273,6 +273,7 @@ public class GhostLegRenderer : MonoBehaviour
 
             }
         }
+        AssignAnimalsToPlayers(map.Count);
         CreatePlayerInputFields(map.Count);
     }
 
@@ -280,6 +281,8 @@ public class GhostLegRenderer : MonoBehaviour
     {
         GameObject aIcon = Instantiate(aniamlIcon);
         Image img = aIcon.GetComponent<Image>();
+
+
 
         if (animalType == AnimalEnum.bear)
         {
@@ -361,5 +364,75 @@ public class GhostLegRenderer : MonoBehaviour
         int random = UnityEngine.Random.Range(0, currentMap.Count);
         startFollowingWithIndex(random);
     }
+
+
+
+
+    public void AssignAnimalsToPlayers(int numberOfPlayers)
+    {
+
+        if (currentMap == null || currentMap.Count == 0)
+        {
+            Debug.LogError("Current map is not initialized");
+            return;
+        }
+
+        if (numberOfPlayers > currentMap.Count)
+        {
+            Debug.LogError("Number of players exceeds current map size");
+            return;
+        }
+
+
+        switch (numberOfPlayers)
+        {
+            case 2:
+                currentMap[0].animal = AnimalEnum.bear;
+                currentMap[1].animal = AnimalEnum.byung;
+                break;
+            case 3:
+                currentMap[0].animal = AnimalEnum.bear;
+                currentMap[1].animal = AnimalEnum.byung;
+                currentMap[2].animal = AnimalEnum.tiger;
+                break;
+            case 4:
+                currentMap[0].animal = AnimalEnum.bear;
+                currentMap[1].animal = AnimalEnum.byung;
+                currentMap[2].animal = AnimalEnum.tiger;
+                currentMap[3].animal = AnimalEnum.dog;
+                break;
+            case 5:
+                currentMap[0].animal = AnimalEnum.bear;
+                currentMap[1].animal = AnimalEnum.byung;
+                currentMap[2].animal = AnimalEnum.tiger;
+                currentMap[3].animal = AnimalEnum.dog;
+                currentMap[4].animal = AnimalEnum.panda;
+                break;
+            case 6:
+                currentMap[0].animal = AnimalEnum.bear;
+                currentMap[1].animal = AnimalEnum.byung;
+                currentMap[2].animal = AnimalEnum.tiger;
+                currentMap[3].animal = AnimalEnum.dog;
+                currentMap[4].animal = AnimalEnum.panda;
+                currentMap[5].animal = AnimalEnum.pig;
+                break;
+
+            default:
+                Debug.LogError("Unsupported number of players");
+                break;
+        }
+
+
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            GameObject legSprite = createAnimalIcon(currentMap[i].animal);
+            GameObject spriteAnchor = legGameObjects[i].transform.GetChild(0).gameObject;
+            spriteAnchor.transform.SetParent(legGameObjects[i].transform);
+            FollowWorldObject fwo = legSprite.GetComponent<FollowWorldObject>();
+            fwo.setTarget(spriteAnchor);
+            legSprite.transform.SetParent(canvas.transform);
+        }
+    }
+
 }
 

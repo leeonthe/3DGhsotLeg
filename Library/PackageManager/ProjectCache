@@ -736,6 +736,7 @@ m_PackageAssets:
         - 3.2.0-pre.2
         - 3.2.0-pre.3
         - 3.2.0-pre.4
+        - 3.2.0-pre.5
         - 4.0.0-pre.1
         - 4.0.0-pre.2
         compatible:
@@ -744,6 +745,7 @@ m_PackageAssets:
         - 3.2.0-pre.2
         - 3.2.0-pre.3
         - 3.2.0-pre.4
+        - 3.2.0-pre.5
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
