@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         createGhostLeg();
         renderer.createGhostLeg(legs);
+        
         //startIndex = Random.Range(0, numsPlayer);
         //createGhostLeg();
         //renderer.createGhostLeg(legs);
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
             playerText.text = numsPlayer.ToString();
             createGhostLeg();
             renderer.createGhostLeg(legs);
+            renderer.resetStartPoint();
         }
     }
 
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
             playerText.text = numsPlayer.ToString();
             createGhostLeg();
             renderer.createGhostLeg(legs);
+            renderer.resetStartPoint();
         }
     }
 
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < numsPlayer; i++)
         {
             legs.Add(new Leg());
+            legs[i].animal = (AnimalEnum) i;
         }
         // curr progress of each index
         float[] arr = new float[numsPlayer];
@@ -103,6 +107,8 @@ public class GameManager : MonoBehaviour
         }
         return true;
     }
+
+    
 
 
     private Bridge makeBridge(float[] arr)

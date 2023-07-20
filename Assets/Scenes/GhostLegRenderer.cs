@@ -30,9 +30,13 @@ public class GhostLegRenderer : MonoBehaviour
     public GameObject canvas;
     public GameObject aniamlIcon;
 
+    public GameObject textField;
+
 
     private List<Leg> currentMap;
     private List<GameObject> legGameObjects;
+
+    public int startPoint = 0;
 
     private void Awake()
     {
@@ -229,8 +233,19 @@ public class GhostLegRenderer : MonoBehaviour
 
             GameObject legSprite = createAnimalIcon(map[i].animal);
             GameObject spriteAnchor = new GameObject("Sprite Anchor " + i);
+            GameObject textInput = Instantiate(textField);
+            GameObject textInputAnchor = new GameObject("Text Anchor " + i);
+
+            textInputAnchor.transform.position = line.transform.position + Vector3.up * -3; //
+            
+            FollowWorldObject fwoText = textInput.GetComponent<FollowWorldObject>();
+            fwoText.setTarget(textInputAnchor);
+            textInput.transform.SetParent(canvas.transform);
+           
             spriteAnchor.transform.position = line.transform.position + Vector3.up * legLength;
             spriteAnchor.transform.SetParent(line.transform);
+            textInputAnchor.transform.SetParent(line.transform);
+
             FollowWorldObject fwo = legSprite.GetComponent<FollowWorldObject>();
             fwo.setTarget(spriteAnchor);
             legSprite.transform.SetParent(canvas.transform);
@@ -273,7 +288,7 @@ public class GhostLegRenderer : MonoBehaviour
 
             }
         }
-        AssignAnimalsToPlayers(map.Count);
+      //  AssignAnimalsToPlayers(map.Count);
         CreatePlayerInputFields(map.Count);
     }
 
@@ -281,7 +296,6 @@ public class GhostLegRenderer : MonoBehaviour
     {
         GameObject aIcon = Instantiate(aniamlIcon);
         Image img = aIcon.GetComponent<Image>();
-
 
 
         if (animalType == AnimalEnum.bear)
@@ -315,6 +329,7 @@ public class GhostLegRenderer : MonoBehaviour
 
     public void CreatePlayerInputFields(int numPlayers)
     {
+
         foreach (Transform child in canvas.transform)
         {
             if (child.name.StartsWith("PlayerInput"))
@@ -325,7 +340,7 @@ public class GhostLegRenderer : MonoBehaviour
         for (int i = 0; i < numPlayers; i++)
         {
             float x = root.transform.position.x + radius * Mathf.Cos(angleDelta * i);
-            float y = root.transform.position.y + radius * Mathf.Sin(angleDelta * i);
+            float y = root.transform.position.z + radius * Mathf.Sin(angleDelta * i);
 
             GameObject inputFieldObj = new GameObject("PlayerInput" + i);
             inputFieldObj.transform.SetParent(canvas.transform);
@@ -344,11 +359,6 @@ public class GhostLegRenderer : MonoBehaviour
         }
     }
 
-
-
-
-
-
     public void startFollowingWithIndex(int i)
     {
         GameObject startLeg = legGameObjects[i];
@@ -359,80 +369,32 @@ public class GhostLegRenderer : MonoBehaviour
         StartCoroutine(moveFollower(path, -1, currentMap.Count));
     }
 
-    public void startRandom()
+    public void startRandom() //rename method
     {
+
         int random = UnityEngine.Random.Range(0, currentMap.Count);
         startFollowingWithIndex(random);
     }
 
-
-
-
-    public void AssignAnimalsToPlayers(int numberOfPlayers)
+    public void startNext()
     {
-
-        if (currentMap == null || currentMap.Count == 0)
+        startFollowingWithIndex(startPoint++);
+        if(currentMap.Count <= startPoint)
         {
-            Debug.LogError("Current map is not initialized");
-            return;
+            resetStartPoint();
         }
 
-        if (numberOfPlayers > currentMap.Count)
-        {
-            Debug.LogError("Number of players exceeds current map size");
-            return;
-        }
-
-
-        switch (numberOfPlayers)
-        {
-            case 2:
-                currentMap[0].animal = AnimalEnum.bear;
-                currentMap[1].animal = AnimalEnum.byung;
-                break;
-            case 3:
-                currentMap[0].animal = AnimalEnum.bear;
-                currentMap[1].animal = AnimalEnum.byung;
-                currentMap[2].animal = AnimalEnum.tiger;
-                break;
-            case 4:
-                currentMap[0].animal = AnimalEnum.bear;
-                currentMap[1].animal = AnimalEnum.byung;
-                currentMap[2].animal = AnimalEnum.tiger;
-                currentMap[3].animal = AnimalEnum.dog;
-                break;
-            case 5:
-                currentMap[0].animal = AnimalEnum.bear;
-                currentMap[1].animal = AnimalEnum.byung;
-                currentMap[2].animal = AnimalEnum.tiger;
-                currentMap[3].animal = AnimalEnum.dog;
-                currentMap[4].animal = AnimalEnum.panda;
-                break;
-            case 6:
-                currentMap[0].animal = AnimalEnum.bear;
-                currentMap[1].animal = AnimalEnum.byung;
-                currentMap[2].animal = AnimalEnum.tiger;
-                currentMap[3].animal = AnimalEnum.dog;
-                currentMap[4].animal = AnimalEnum.panda;
-                currentMap[5].animal = AnimalEnum.pig;
-                break;
-
-            default:
-                Debug.LogError("Unsupported number of players");
-                break;
-        }
-
-
-        for (int i = 0; i < numberOfPlayers; i++)
-        {
-            GameObject legSprite = createAnimalIcon(currentMap[i].animal);
-            GameObject spriteAnchor = legGameObjects[i].transform.GetChild(0).gameObject;
-            spriteAnchor.transform.SetParent(legGameObjects[i].transform);
-            FollowWorldObject fwo = legSprite.GetComponent<FollowWorldObject>();
-            fwo.setTarget(spriteAnchor);
-            legSprite.transform.SetParent(canvas.transform);
-        }
     }
+
+    public void resetStartPoint()
+    {
+        startPoint = 0;
+    }
+
+
+
+
+    
 
 }
 
