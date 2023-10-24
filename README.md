@@ -10,8 +10,11 @@ Upon clicking a button, each generated animal follows the legs they are connecte
 **Features**
 
 3D Line Drawing: Create and visualize legs in a 3D space.
+
 Animal Interaction: Generate animals that interact with the legs. Adjust the number of animals on the screen, ranging from a minimum of 2 to a maximum of 6, using the increasing/decreasing buttons.
+
 Content Reveal: Discover the contents at the bottom of the legs through the animal's traversal. 
+
 User Interaction: Engage with the application through a user-friendly interface.
 
 **Installation**
