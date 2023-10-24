@@ -23,7 +23,9 @@ User Interaction: Engage with the application through a user-friendly interface.
 
 Clone the repository: git clone https://github.com/leeonthe/3DGhsotLeg.git
 
+
 Open the project in Unity.
+
 
 Ensure all dependencies are installed and properly configured.
 
