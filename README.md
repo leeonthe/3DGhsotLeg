@@ -1,6 +1,18 @@
 # 3DGhsotLeg
 <img width="381" alt="Screenshot 2023-10-23 at 11 37 29 PM" src="https://github.com/leeonthe/3DGhsotLeg/assets/86170304/2b69a64d-1086-484d-a540-08fde51bd6df">
 
+**How to Play**
+Click this link to play a game! https://leeonthe.github.io/3DGhsotLeg/
+
+If the link does not work, e.g. **Page 404** or **Unable to parse Build/Web Build.framework.js.br!**, please follow the steps below:
+
+1. Clone the repository or download zip
+2. Open the project
+3. Navigate to the **File** and click **Build Settings**
+4. Under platform, click **WebGL**
+5. Click **Add Open Scenes** on the top
+6. Now click **Build and Run**!
+
 **Description**
 
 3D Ghost Leg is an interactive 3D application developed using the Unity Engine. 
