@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{EC18FA0A-DB0F-9129-D830-781D376A9618}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/GhostLegRenderer.cs">
+    <Files>
+      <File FileName="Assets/Scenes/GhostLegRenderer.cs" Line="433" Column="41" />
+      <File FileName="Assets/Scenes/GameManager.cs" Line="127" Column="49" />
+      <File FileName="Assets/Scenes/CameraControl.cs" />
+      <File FileName="Assets/Scenes/followWorldObject.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GhostLegg" expanded="True">
+            <Node name="Assets" expanded="True" selected="True">
+              <Node name="Scenes" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b2fbfb0d-5ae3-412c-ae1e-847ff0585866" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
