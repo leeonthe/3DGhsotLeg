@@ -2,6 +2,7 @@
 <img width="381" alt="Screenshot 2023-10-23 at 11 37 29 PM" src="https://github.com/leeonthe/3DGhsotLeg/assets/86170304/2b69a64d-1086-484d-a540-08fde51bd6df">
 
 **How to Play**
+
 Click this link to play a game! https://leeonthe.github.io/3DGhsotLeg/
 
 If the link does not work, e.g. **Page 404** or **Unable to parse Build/Web Build.framework.js.br!**, please follow the steps below:
