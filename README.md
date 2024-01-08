@@ -3,7 +3,7 @@
 
 **How to Play**
 
-Click this link to play a game! https://leeonthe.github.io/3DGhsotLeg/
+Click this link to play a game! [https://leeonthe.github.io/3DGhsotLeg/](https://hoooing.itch.io/3dghostleg)
 
 If the link does not work, e.g. **Page 404** or **Unable to parse Build/Web Build.framework.js.br!**, please follow the steps below:
 
